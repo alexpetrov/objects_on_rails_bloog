@@ -1,6 +1,12 @@
 # app/models/blog.rb
 
 class Blog
+  attr_reader :entries
+
+  def initialize
+    @entries = []
+  end
+
   def title
     "Watching Paint Dry"
   end
