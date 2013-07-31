@@ -15,13 +15,15 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'sqlite3', '1.3.7'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 
 group :development, :test do
-  gem 'sqlite3', '1.3.5'
+#  gem 'sqlite3', '1.3.5'
 #  gem 'rspec-rails', '2.11.0'
   gem 'minitest-rails'
 #  gem 'guard-rspec', '1.2.1'

@@ -1,6 +1,12 @@
 # spec/models/post_spec.rb
 
 require 'minitest/autorun'
+
+module ActiveModel
+  module Naming; end
+  module Conversion; end
+end
+
 require_relative '../../app/models/post'
 
 describe Post do
