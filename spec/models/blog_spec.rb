@@ -21,6 +21,22 @@ describe Blog do
     it "sets the post's blog reference to itself" do
       @it.new_post.blog.must_equal(@it)
     end
+
+    it "accepts an attibute hash on behalf of the post maker" do
+      post_source = MiniTest::Mock.new
+      post_source.expect(:call, @new_post, [{x:42, y:'z'}])
+      @it.post_source = post_source
+      @it.new_post(x: 42, y:'z')
+      post_source.verify
+    end
+  end
+
+  describe "#add_entry" do
+    it "adds the entry to the blog" do
+      entry = Object.new
+      @it.add_entry(entry)
+      @it.entries.must_include(entry)
+    end
   end
 
   it "has no entries" do
