@@ -1,11 +1,7 @@
 # app/exhibits/picture_post_exhibit.rb
-require 'delegate'
+require_relative 'exhibit'
 
-class PicturePostExhibit < SimpleDelegator
-  def initialize(model, context)
-    @context = context
-    super(model)
-  end
+class PicturePostExhibit < Exhibit
 
   def render_body
     @context.render(partial: "/posts/picture_body", locals: {post: self})
