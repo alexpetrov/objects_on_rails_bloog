@@ -5,7 +5,7 @@ class Post
   extend ActiveModel::Naming
   include ActiveModel::Conversion
 
-  attr_accessor :blog, :title, :body, :pubdate
+  attr_accessor :blog, :title, :body, :pubdate, :image_url
 
   def initialize(attrs = {})
     attrs.each do |k,v| send("#{k}=",v) end
@@ -18,5 +18,9 @@ class Post
 
   def persisted?
     false
+  end
+
+  def picture?
+    image_url.present?
   end
 end
