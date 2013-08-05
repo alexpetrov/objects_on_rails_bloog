@@ -1,17 +1,8 @@
 # app/helpers/exhibits_helper.rb
+require_relative '../exhibits/exhibit.rb'
 
 module ExhibitsHelper
   def exhibit(model, context)
-    # Doing a stiring compsrison because of Rails class-reloading weirdness
-    case model.class.name
-    when 'Post'
-      if model.picture?
-        PicturePostExhibit.new(model, context)
-      else
-        TextPostExhibit.new(model, context)
-      end
-    else
-      model
-    end
+    Exhibit.exhibit(model, context)
   end
 end

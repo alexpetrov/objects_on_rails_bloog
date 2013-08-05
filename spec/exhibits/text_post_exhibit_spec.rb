@@ -1,5 +1,8 @@
 # spec/exhibits/text_post_exhibit_spec.rb
 require_relative '../spec_helper_lite'
+stub_module 'ActiveModel::Conversion'
+stub_module 'ActiveModel::Naming'
+
 require_relative '../../app/exhibits/text_post_exhibit'
 
 describe TextPostExhibit do
