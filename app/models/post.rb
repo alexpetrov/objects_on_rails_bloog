@@ -1,23 +1,15 @@
 # app/models/post.rb
 require 'date'
+require 'active_record'
 
-class Post
-  extend ActiveModel::Naming
-  include ActiveModel::Conversion
-
-  attr_accessor :blog, :title, :body, :pubdate, :image_url
-
-  def initialize(attrs = {})
-    attrs.each do |k,v| send("#{k}=",v) end
-  end
+class Post<ActiveRecord::Base
+  validates :title, presence: true
+  attr_accessor :blog
 
   def publish(clock=DateTime)
+    return false unless valid?
     self.pubdate = clock.now
-    blog.add_entry(self)
-  end
-
-  def persisted?
-    false
+    @blog.add_entry(self)
   end
 
   def picture?

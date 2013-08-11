@@ -4,8 +4,8 @@ class Blog
   attr_reader :entries
   attr_writer :post_source
 
-  def initialize
-    @entries = []
+  def initialize(entry_fetcher=Post.public_method(:all))
+    @entry_fetcher = entry_fetcher
   end
 
   def title
@@ -23,14 +23,18 @@ class Blog
   end
 
   def add_entry(entry)
-    @entries << entry
+    entry.save
   end
 
   def entries
-    @entries.sort_by {|e| e.pubdate }.reverse.take(10)
+    fetch_entries.sort_by {|e| e.pubdate }.reverse.take(10)
   end
 
   private
+
+  def fetch_entries
+    @entry_fetcher.()
+  end
 
   def post_source
     @post_source ||= Post.public_method(:new)

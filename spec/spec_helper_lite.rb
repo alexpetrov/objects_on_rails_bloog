@@ -2,6 +2,7 @@
 require 'rr'
 require 'date'
 require 'ostruct'
+require 'nulldb'
 require 'minitest/autorun'
 
 class MiniTest::Unit::TestCase
@@ -25,5 +26,17 @@ def stub_class(full_name)
     rescue NameError
       context.const_set(name, Class.new)
     end
+  end
+end
+
+module SpecHelpers
+  def setup_nulldb
+    schema_path = File.expand_path('../db/schema.rb',
+                                   File.dirname(__FILE__))
+    NullDB.nullify(schema: schema_path)
+  end
+
+  def teardown_nulldb
+    NullDB.restore
   end
 end

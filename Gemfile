@@ -32,6 +32,10 @@ group :development, :test do
 #  gem 'spork', '0.9.2'
 end
 
+group :test do
+  gem 'database_cleaner', '<= 1.0.1'
+  gem 'activerecord-nulldb-adapter'
+end
 
 group :assets do
   # Use SCSS for stylesheets

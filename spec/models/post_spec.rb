@@ -8,8 +8,15 @@ stub_module 'ActiveModel::Naming'
 require_relative '../../app/models/post'
 
 describe Post do
+  include SpecHelpers
   before do
-    @it = Post.new
+    setup_nulldb
+    @it = Post.new(title: "TITLE")
+    @ar = @it
+  end
+
+  after do
+    teardown_nulldb
   end
 
   it "starts with blank attributes" do
@@ -31,12 +38,6 @@ describe Post do
     blog = Object.new
     @it.blog = blog
     @it.blog.must_equal blog
-  end
-
-  it "supports setting attributes in the initializer" do
-    it = Post.new(title: "mytitle", body: "mybody")
-    it.title.must_equal "mytitle"
-    it.body.must_equal "mybody"
   end
 
   describe "#publish" do
