@@ -5,8 +5,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = @blog.new_post(params[:post])
+    @post = @blog.new_post(post_params)
     @post.publish
     redirect_to root_path, notice: "Post added!"
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :post, :image_url)
   end
 end

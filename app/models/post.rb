@@ -2,7 +2,7 @@
 require 'date'
 require 'active_record'
 
-class Post<ActiveRecord::Base
+class Post < ActiveRecord::Base
   validates :title, presence: true
   attr_accessor :blog
 

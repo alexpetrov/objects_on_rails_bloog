@@ -2,8 +2,11 @@
 require 'rr'
 require 'date'
 require 'ostruct'
-require 'nulldb'
+require 'active_support'
+require 'active_support/deprecation'
+require 'activerecord-nulldb-adapter'
 require 'minitest/autorun'
+
 
 class MiniTest::Unit::TestCase
   include RR::Adapters::MiniTest

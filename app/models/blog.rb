@@ -1,7 +1,7 @@
 # app/models/blog.rb
 
 class Blog
-  attr_reader :entries
+#  attr_reader :entries
   attr_writer :post_source
 
   def initialize(entry_fetcher=Post.public_method(:all))
