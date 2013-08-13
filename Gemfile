@@ -34,7 +34,7 @@ end
 
 group :test do
   gem 'database_cleaner', '<= 1.0.1'
-  gem 'activerecord-nulldb-adapter'
+  gem 'activerecord-nulldb-adapter', :git => 'git://github.com/nulldb/nulldb.git'
 end
 
 group :assets do

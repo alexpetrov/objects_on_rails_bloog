@@ -3,7 +3,8 @@ require 'date'
 require 'active_record'
 
 class Post < ActiveRecord::Base
-  validates :title, presence: true
+
+  ActiveRecord::Base.validates :title, presence: true
   attr_accessor :blog
 
   def publish(clock=DateTime)
