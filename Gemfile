@@ -32,9 +32,15 @@ group :development, :test do
 #  gem 'spork', '0.9.2'
 end
 
+group :development do
+  gem 'pry'
+  gem 'pry-rails'
+  gem 'pry-nav'
+end
+
 group :test do
   gem 'database_cleaner', '<= 1.0.1'
-  gem 'activerecord-nulldb-adapter', :git => 'git://github.com/nulldb/nulldb.git'
+  gem 'activerecord-nulldb-adapter', :git => 'git://github.com/blaet/nulldb.git'
 end
 
 group :assets do
